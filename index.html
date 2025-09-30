@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Horario 6° Año</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      text-align: center;
+    }
+    th, td {
+      border: 1px solid #444;
+      padding: 8px;
+      min-width: 120px;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .recreo, .almuerzo {
+      background-color: #ffe699;
+      font-weight: bold;
+      text-align: center;
+    }
+    .hidden {
+      display: none;
+    }
+    #controles {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #aaa;
+      background: #f9f9f9;
+    }
+    input {
+      margin: 5px 0;
+      width: 200px;
+      padding: 5px;
+    }
+    button {
+      margin: 5px;
+      padding: 5px 10px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Horario 6° Año</h1>
+
+  <button onclick="login('profesor')">Ingresar como Profesor</button>
+  <button onclick="login('alumno')">Ingresar como Alumno</button>
+
+  <h2 id="rol">No has iniciado sesión</h2>
+
+  <table id="tablaHorarios">
+    <thead>
+      <tr>
+        <th>Hora</th>
+        <th>Lunes</th>
+        <th>Martes</th>
+        <th>Miércoles</th>
+        <th>Jueves</th>
+        <th>Viernes</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>08:00 - 08:40</td>
+        <td id="L1"></td>
+        <td id="M1">CLUB DE CIENCIAS<br>Aula 5 Fabio</td>
+        <td id="X1">FILOSOFÍA<br>Aula 2 Maxi</td>
+        <td id="J1">LENGUA<br>Aula 2 Silvia</td>
+        <td id="V1">QUÍMICA<br>Aula 7 Valeria</td>
+      </tr>
+      <tr>
+        <td>08:40 - 09:20</td>
+        <td id="L2"></td>
+        <td id="M2">CLUB DE CIENCIAS<br>Aula 5 Fabio</td>
+        <td id="X2">FILOSOFÍA<br>Aula 2 Maxi</td>
+        <td id="J2">LENGUA<br>Aula 2 Silvia</td>
+        <td id="V2">QUÍMICA<br>Aula 7 Valeria</td>
+      </tr>
+      <tr class="recreo"><td colspan="6">Recreo</td></tr>
+      <tr>
+        <td>09:30 - 10:10</td>
+        <td id="L3">MATEMÁTICA<br>Aula 7 Vanina</td>
+        <td id="M3">APLICACIONES MÓVILES<br>Aula 5 Laura</td>
+        <td id="X3">FILOSOFÍA<br>Aula 2 Maxi</td>
+        <td id="J3">CLUB DE ARTE<br>Aula 7 Caro</td>
+        <td id="V3">MATEMÁTICA<br>Aula 2 Vanina</td>
+      </tr>
+      <tr>
+        <td>10:10 - 10:50</td>
+        <td id="L4">MATEMÁTICA<br>Aula 7 Vanina</td>
+        <td id="M4">APLICACIONES MÓVILES<br>Aula 5 Laura</td>
+        <td id="X4">LENGUA<br>Aula 3 Silvia</td>
+        <td id="J4">CLUB DE ARTE<br>Aula 7 Caro</td>
+        <td id="V4">MATEMÁTICA<br>Aula 2 Vanina</td>
+      </tr>
+      <tr class="recreo"><td colspan="6">Recreo</td></tr>
+      <tr>
+        <td>11:00 - 11:40</td>
+        <td id="L5">CIUDADANÍA<br>Aula 3 Leandro</td>
+        <td id="M5">FVT<br>Aula 1 Julieta</td>
+        <td id="X5">LENGUA<br>Aula 3 Silvia</td>
+        <td id="J5">TEATRO<br>Aula 6 Caro</td>
+        <td id="V5">TESTING<br>Aula 5 Augusto</td>
+      </tr>
+      <tr>
+        <td>11:40 - 12:20</td>
+        <td id="L6">CIUDADANÍA<br>Aula 3 Leandro</td>
+        <td id="M6">FVT<br>Aula 1 Julieta</td>
+        <td id="X6">TESTING<br>Aula 5 Augusto</td>
+        <td id="J6">TEATRO<br>Aula 6 Caro</td>
+        <td id="V6">TESTING<br>Aula 5 Augusto</td>
+      </tr>
+      <tr>
+        <td>12:20 - 13:00</td>
+        <td id="L7">CIUDADANÍA<br>Aula 2 Leandro</td>
+        <td id="M7">FVT<br>Aula 1 Julieta</td>
+        <td id="X7">TESTING<br>Aula 5 Augusto</td>
+        <td id="J7">TEATRO<br>Aula 6 Caro</td>
+        <td id="V7">APLICACIONES MÓVILES<br>Aula 5 Laura</td>
+      </tr>
+      <tr class="almuerzo"><td colspan="6">Almuerzo</td></tr>
+      <tr>
+        <td>13:30 - 14:10</td>
+        <td id="L8">INGLÉS<br>Aula 5 Carla</td>
+        <td id="M8">QUÍMICA<br>Aula 7 Valeria</td>
+        <td id="X8">PROGRAMACIÓN<br>Aula 5 Juan</td>
+        <td id="J8">PROGRAMACIÓN<br>Aula 5 Juan</td>
+        <td id="V8">APLICACIONES MÓVILES<br>Aula 5 Laura</td>
+      </tr>
+      <tr>
+        <td>14:10 - 14:50</td>
+        <td id="L9">INGLÉS<br>Aula 3 Carla</td>
+        <td id="M9">QUÍMICA<br>Aula 7 Valeria</td>
+        <td id="X9">PROGRAMACIÓN<br>Aula 5 Juan</td>
+        <td id="J9">PROGRAMACIÓN<br>Aula 5 Juan</td>
+        <td id="V9">CLUB DE DEPORTE<br>Adri</td>
+      </tr>
+      <tr class="recreo"><td colspan="6">Recreo</td></tr>
+      <tr>
+        <td>15:00 - 15:40</td>
+        <td id="L10">INGLÉS<br>Aula 3 Carla</td>
+        <td id="M10">PROGRAMACIÓN<br>Aula 5 Juan</td>
+        <td id="X10">EDUC. FÍSICA<br>Luli hasta 16</td>
+        <td id="J10">TIA<br>Aula 5 Carla</td>
+        <td id="V10">CLUB DE DEPORTE<br>Adri</td>
+      </tr>
+      <tr>
+        <td>15:40 - 16:20</td>
+        <td id="L11"></td>
+        <td id="M11">PROGRAMACIÓN<br>Aula 5 Juan</td>
+        <td id="X11"></td>
+        <td id="J11">TIA<br>Aula 5 Carla</td>
+        <td id="V11">EDUC. FÍSICA<br>Luli hasta 17:20</td>
+      </tr>
+    </tbody>
+  </table>
+
+  
+  <div id="controles" class="hidden">
+    <h3>Editar horario</h3>
+    <label for="celda">Seleccionar celda (ej: L3, M6, V9): </label>
+    <input type="text" id="celda" placeholder="Ej: L3"><br>
+    <label for="nuevoTexto">Nuevo contenido: </label>
+    <input type="text" id="nuevoTexto" placeholder="Materia + Aula"><br>
+    <button onclick="editarHorario()">Guardar cambio</button>
+    <button onclick="deshacerCambio()">Volver atrás</button>
+  </div>
+
+  <script>
+    let rol = null;
+    let historial = []; 
+    window.onload = function() {
+      const guardado = localStorage.getItem("horario6A");
+      if (guardado) {
+        const datos = JSON.parse(guardado);
+        for (const id in datos) {
+          const celda = document.getElementById(id);
+          if (celda) celda.innerHTML = datos[id];
+        }
+      }
+    }
+
+    function login(tipo) {
+      rol = tipo;
+      document.getElementById("rol").innerText = "Has ingresado como: " + tipo.toUpperCase();
+      if (tipo === "profesor") {
+        document.getElementById("controles").classList.remove("hidden");
+      } else {
+        document.getElementById("controles").classList.add("hidden");
+      }
+    }
+
+    function editarHorario() {
+      if (rol !== "profesor") {
+        alert("Solo los profesores pueden editar horarios.");
+        return;
+      }
+      const celdaId = document.getElementById("celda").value.trim();
+      const nuevoTexto = document.getElementById("nuevoTexto").value.trim();
+      const elemento = document.getElementById(celdaId);
+
+      if (elemento && nuevoTexto !== "") {
+       
+        historial.push({
+          id: celdaId,
+          valorAnterior: elemento.innerHTML
+        });
+
+      
+        elemento.innerHTML = nuevoTexto;
+
+      
+        guardarCambios();
+        alert("Horario actualizado y guardado.");
+      } else {
+        alert("Celda no válida o texto vacío.");
+      }
+    }
+
+    function deshacerCambio() {
+      if (historial.length === 0) {
+        alert("No hay cambios para deshacer.");
+        return;
+      }
+
+      const ultimo = historial.pop();
+      const celda = document.getElementById(ultimo.id);
+      if (celda) {
+        celda.innerHTML = ultimo.valorAnterior;
+        guardarCambios();
+        alert("Se deshizo el último cambio.");
+      }
+    }
+
+    function guardarCambios() {
+      const celdas = document.querySelectorAll("#tablaHorarios td[id]");
+      let datos = {};
+      celdas.forEach(celda => {
+        datos[celda.id] = celda.innerHTML;
+      });
+      localStorage.setItem("horario6A", JSON.stringify(datos));
+    }
+  </script>
+
+  <script>
+  function editarHorario() {
+    const celdaId = document.getElementById("celda").value.trim();
+    const nuevoTexto = document.getElementById("nuevoTexto").value.trim();
+
+    if (celdaId && nuevoTexto) {
+     
+      fetch("guardar.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "id=" + encodeURIComponent(celdaId) + "&contenido=" + encodeURIComponent(nuevoTexto)
+      })
+      .then(res => res.text())
+      .then(data => {
+        alert(data); 
+        document.getElementById(celdaId).innerHTML = nuevoTexto;
+      });
+    } else {
+      alert("Celda no válida o texto vacío.");
+    }
+  }
+</script>
+</body>
+</html>
