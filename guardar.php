@@ -1,19 +1,20 @@
 <?php
+session_start();
+if ($_SESSION['rol'] !== 'profesor') {
+    exit("No autorizado");
+}
 include "conexion.php";
 
-if (isset($_POST['id']) && isset($_POST['contenido'])) {
+if (isset($_POST['id']) && isset($_POST['contenido']) && isset($_POST['anio'])) {
     $id = $_POST['id'];
     $contenido = $_POST['contenido'];
+    $anio = intval($_POST['anio']);
 
-    $sql = "UPDATE horarios SET contenido=? WHERE id=?";
+    $sql = "INSERT INTO horarios (id, anio, contenido) VALUES (?, ?, ?)
+            ON DUPLICATE KEY UPDATE contenido=VALUES(contenido)";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ss", $contenido, $id);
-
-    if ($stmt->execute()) {
-        echo "OK";
-    } else {
-        echo "Error al guardar: " . $conn->error;
-    }
+    $stmt->bind_param("sis", $id, $anio, $contenido);
+    echo $stmt->execute() ? "OK" : "Error";
 }
 $conn->close();
 ?>
